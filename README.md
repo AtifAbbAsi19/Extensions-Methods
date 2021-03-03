@@ -4,94 +4,94 @@ Extensions Methods are kind of helper methods merged into custom or default data
 ### -Simple Extensions  UI
 
 
-fun View.setRowWidth() {
-    val layoutParam = RecyclerView.LayoutParams(
-        ViewGroup.LayoutParams.MATCH_PARENT,
-        ViewGroup.LayoutParams.WRAP_CONTENT
-    )
-    this.layoutParams = layoutParam
-    this.requestLayout()
+        fun View.setRowWidth() {
+            val layoutParam = RecyclerView.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            this.layoutParams = layoutParam
+            this.requestLayout()
 
-}
+        }
 
-fun TextView.maxLength(value: Int) {
-    this.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(value))
-}
-
-
-fun ImageView.loadImage(url: String?) {
-
-    if (url.isNullOrEmpty()) return
-
-    val builder = LazyHeaders.Builder()
-
-    val glideUrl = GlideUrl(url, builder.build())
-
-    val requestOptions = RequestOptions()
-        .diskCacheStrategy(DiskCacheStrategy.ALL)
-        .priority(Priority.HIGH)
-
-    Glide.with(this.context)
-        .setDefaultRequestOptions(requestOptions)
-        .load(glideUrl)
-        .into(this)
-}
-
-fun View.expand() {
-    visibility = View.VISIBLE
-    val animate = TranslateAnimation(0f, 0f, -height.toFloat(), 0f)
-    animate.duration = 200
-    animate.fillAfter = true
-    startAnimation(animate)
-}
-
-fun View.collapse() {
-    val animate = TranslateAnimation(0f, 0f, 0f, -height.toFloat())
-    animate.duration = 200
-    animate.fillAfter = true
-    startAnimation(animate)
-}
+        fun TextView.maxLength(value: Int) {
+            this.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(value))
+        }
 
 
-fun View.setBackDrawableGroundTint(color: Int) {
+        fun ImageView.loadImage(url: String?) {
 
-    DrawableCompat.setTint(
-        this.background,
-        ContextCompat.getColor(this.context, color)
-    )
+            if (url.isNullOrEmpty()) return
 
-}
+            val builder = LazyHeaders.Builder()
 
-fun ImageView.setResourceDrawableGroundTint(color: Int) {
+            val glideUrl = GlideUrl(url, builder.build())
 
-    DrawableCompat.setTint(
-        this.drawable,
-        ContextCompat.getColor(this.context, color)
-    )
+            val requestOptions = RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.HIGH)
 
-}
+            Glide.with(this.context)
+                .setDefaultRequestOptions(requestOptions)
+                .load(glideUrl)
+                .into(this)
+        }
+
+        fun View.expand() {
+            visibility = View.VISIBLE
+            val animate = TranslateAnimation(0f, 0f, -height.toFloat(), 0f)
+            animate.duration = 200
+            animate.fillAfter = true
+            startAnimation(animate)
+        }
+
+        fun View.collapse() {
+            val animate = TranslateAnimation(0f, 0f, 0f, -height.toFloat())
+            animate.duration = 200
+            animate.fillAfter = true
+            startAnimation(animate)
+        }
 
 
-fun AppCompatTextView.setTextColorExtension(color: Int) {
+        fun View.setBackDrawableGroundTint(color: Int) {
 
-    this.setTextColor(
-        ContextCompat.getColor(
-            this.context,
-            color
-        )
-    )
+            DrawableCompat.setTint(
+                this.background,
+                ContextCompat.getColor(this.context, color)
+            )
 
-}
+        }
+
+        fun ImageView.setResourceDrawableGroundTint(color: Int) {
+
+            DrawableCompat.setTint(
+                this.drawable,
+                ContextCompat.getColor(this.context, color)
+            )
+
+        }
 
 
-fun AppCompatTextView.drawUnderLine() {
-    val text = SpannableString(this.text.toString())
-    text.setSpan(UnderlineSpan(), 0, text.length, 0)
-    this.text = text
-}
+        fun AppCompatTextView.setTextColorExtension(color: Int) {
 
-fun ViewGroup.setLayoutChangingTransition() {
-    this.layoutTransition =
-        LayoutTransition()
-    this.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
-}
+            this.setTextColor(
+                ContextCompat.getColor(
+                    this.context,
+                    color
+                )
+            )
+
+        }
+
+
+        fun AppCompatTextView.drawUnderLine() {
+            val text = SpannableString(this.text.toString())
+            text.setSpan(UnderlineSpan(), 0, text.length, 0)
+            this.text = text
+        }
+
+        fun ViewGroup.setLayoutChangingTransition() {
+            this.layoutTransition =
+                LayoutTransition()
+            this.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
+        }
