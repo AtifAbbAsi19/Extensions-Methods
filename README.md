@@ -95,3 +95,16 @@ Extensions Methods are kind of helper methods merged into custom or default data
                 LayoutTransition()
             this.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
         }
+
+
+
+      
+            val label: SpannedString = buildSpannedString {
+
+                append("Rs. ")
+
+                bold { //here we are adding bold font to string
+                    append("Rs. ${5,000.00}")
+                }
+                append(" required")
+            }
