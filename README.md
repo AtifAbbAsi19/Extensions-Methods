@@ -108,3 +108,22 @@ Extensions Methods are kind of helper methods merged into custom or default data
                 }
                 append(" required")
             }
+            
+            
+            
+            try {
+
+
+                /*     val csl =
+                         AppCompatResources.getColorStateList(tabIcon.context, R.color.my_clr_selector)*/
+                val drawable = DrawableCompat.wrap(tabIcon!!.drawable)
+                DrawableCompat.setTintList(
+                    drawable,
+                    ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                )
+                imageview.setImageDrawable(drawable)
+
+
+            } catch (ex: Exception) {
+                ex.message
+            }
